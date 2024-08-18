@@ -102,6 +102,11 @@ app.get("/api/company-names", async (req, res) => {
   return res.json(companyArr);
 });
 
+app.get("/api/exam-details", async (req, res) => {
+  const examDetails = await Exam.find();
+  return res.json(examDetails);
+});
+
 app.get("/api/exam/:id", async (req, res) => {
   try {
     const exam = await Exam.findById(req.params.id);

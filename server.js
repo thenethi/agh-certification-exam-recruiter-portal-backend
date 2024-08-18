@@ -93,6 +93,15 @@ app.post("/api/exam", async (req, res) => {
   }
 });
 
+app.get("/api/company-names", async (req, res) => {
+  const companyNames = await Exam.find();
+  const companyArr = [];
+  for (let i = 0; i < companyNames.length; i++) {
+    companyArr.push(companyNames[i].companyName);
+  }
+  return res.json(companyArr);
+});
+
 app.get("/api/exam/:id", async (req, res) => {
   try {
     const exam = await Exam.findById(req.params.id);
